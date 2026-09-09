@@ -31,7 +31,7 @@
   document.querySelector("#fit").onclick = () => { overview = true; setScale(viewport.clientWidth / width); viewport.scrollLeft = 0; };
   document.querySelector("#read").onclick = () => { overview = false; setScale(1); };
   document.querySelector("#places-jump").onclick = (event) => { event.preventDefault(); reveal("peter1645"); };
-  document.querySelector("#last").onclick = (event) => { event.preventDefault(); reveal("andersj"); };
+  document.querySelector("#last").onclick = (event) => { event.preventDefault(); reveal("viktorodmark"); };
   document.addEventListener("tree:reveal", (event) => reveal(event.detail));
   window.addEventListener("resize", () => { if (overview) setScale(viewport.clientWidth / width); });
   setScale(innerWidth < 650 ? 0.85 : Math.min(1, viewport.clientWidth / 1900));

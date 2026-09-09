@@ -1,6 +1,6 @@
 # Gunnar Valfrid – livsspår
 
-Tidslinje med 30 kapitel, källbilder och ett släktträd med 57 personer.
+Tidslinje med 30 kapitel, källbilder och ett släktträd med 62 personer.
 
 Webbplats: https://odmarken.github.io/-dmarks-tten/
 

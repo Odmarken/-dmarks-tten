@@ -23,7 +23,7 @@ class Cards(HTMLParser):
         attrs = dict(attrs)
         classes = attrs.get('class', '').split()
         kind = next((k for k in self.dimensions if k in classes), None)
-        if tag != 'a' or not kind:
+        if tag not in ('a', 'article') or not kind:
             return
         x = float(re.search(r'left:([\d.]+)px', attrs['style'])[1])
         y = float(re.search(r'top:([\d.]+)px', attrs['style'])[1])
