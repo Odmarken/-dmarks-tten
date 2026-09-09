@@ -112,8 +112,8 @@ button,.jump {
 .tree {
   position:relative;
   transform-origin:top left;
-  width:3440px;
-  height:10680px
+  width:4250px;
+  height:9840px
 }
 .tree svg {
   position:absolute;

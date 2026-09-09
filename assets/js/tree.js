@@ -35,7 +35,7 @@
   document.addEventListener("tree:reveal", (event) => reveal(event.detail));
   window.addEventListener("resize", () => { if (overview) setScale(viewport.clientWidth / width); });
   setScale(innerWidth < 650 ? 0.85 : Math.min(1, viewport.clientWidth / 1900));
-  viewport.scrollTop = 0; viewport.scrollLeft = 0;
+  viewport.scrollTop = 0; viewport.scrollLeft = Number(tree.dataset?.startX || 0) * scale;
   let pan = null, suppressClickUntil = 0;
   viewport.addEventListener("pointerdown", (event) => {
     if (event.pointerType === "touch" || event.button !== 0 || !event.isPrimary) return;
