@@ -113,7 +113,7 @@ button,.jump {
   position:relative;
   transform-origin:top left;
   width:3440px;
-  height:6320px
+  height:9480px
 }
 .tree svg {
   position:absolute;
@@ -130,7 +130,7 @@ button,.jump {
 .person {
   position:absolute;
   width:230px;
-  height:235px;
+  height:352.5px;
   padding:15px 16px;
   background:linear-gradient(130deg,#222,#141414);
   border:1px solid #4c4c4c;
@@ -164,6 +164,12 @@ button,.jump {
   font-size:14px;
   color:#eee
 }
+.person .role {
+  margin:8px 0;
+  color:#eee;
+  font-size:14px;
+  line-height:1.4
+}
 .place {
   font-size:14px;
   line-height:1.4;
@@ -176,22 +182,6 @@ button,.jump {
   font-size:14px;
   letter-spacing:.12em;
   text-transform:uppercase
-}
-.closing {
-  max-width:850px;
-  margin:35px auto;
-  padding:0 25px;
-  color:#aaa
-}
-.closing h2 {
-  color:#eee;
-  font:normal 30px Georgia,serif
-}
-.closing p {
-  margin:14px 0
-}
-.closing a {
-  color:#ddd
 }
 footer {
   max-width:1080px;
@@ -320,7 +310,7 @@ footer {
 .journey-stop {
   position:absolute;
   width:265px;
-  height:130px;
+  height:195px;
   padding:16px 20px;
   border:1px solid #666;
   background:#161616;

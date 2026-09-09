@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../Desktop/dist"
+		},
+		{
+			"path": "../Desktop/scripts"
+		},
+		{
+			"path": "../Desktop/sources"
+		}
+	],
+	"settings": {}
+}
