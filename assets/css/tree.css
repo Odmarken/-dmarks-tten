@@ -1,0 +1,370 @@
+* {
+  box-sizing:border-box
+}
+body {
+  margin:0;
+  background:#0b0b0b;
+  color:#eee;
+  font:16px/1.6 system-ui,sans-serif
+}
+a {
+  color:inherit
+}
+button,a {
+  -webkit-tap-highlight-color:transparent
+}
+a:focus-visible,button:focus-visible {
+  outline:2px solid white;
+  outline-offset:4px
+}
+header {
+  position:sticky;
+  top:0;
+  z-index:5;
+  background:#161616f5;
+  border-bottom:1px solid #444;
+  padding:15px 4vw;
+  display:flex;
+  gap:20px;
+  justify-content:space-between;
+  align-items:center;
+  backdrop-filter:blur(14px)
+}
+header a {
+  text-decoration:none;
+  font-size:14px
+}
+header strong {
+  font-size:14px;
+  letter-spacing:.09em
+}
+main {
+  padding:0 0 50px
+}
+.intro {
+  max-width:1080px;
+  margin:55px auto 26px;
+  padding:0 25px;
+  display:flex;
+  align-items:center;
+  gap:35px
+}
+.intro img {
+  width:88px;
+  height:auto
+}
+.eyebrow {
+  color:#999;
+  text-transform:uppercase;
+  font-size:13px;
+  letter-spacing:.14em
+}
+h1 {
+  font:normal clamp(36px,5vw,66px)/1.1 Georgia,serif;
+  margin:8px 0 16px
+}
+.intro p {
+  max-width:760px;
+  color:#aaa;
+  margin:0
+}
+.toolbar {
+  max-width:1080px;
+  margin:24px auto 15px;
+  padding:0 25px;
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  flex-wrap:wrap;
+  align-items:center
+}
+.controls {
+  display:flex;
+  gap:8px;
+  align-items:center
+}
+button,.jump {
+  font:inherit;
+  font-size:14px;
+  color:#eee;
+  background:#202020;
+  border:1px solid #555;
+  padding:8px 13px;
+  cursor:pointer;
+  text-decoration:none
+}
+.hint {
+  color:#aaa;
+  font-size:14px
+}
+.viewport {
+  width:100%;
+  overflow-x:auto;
+  overscroll-behavior-x:contain;
+  border-top:1px solid #333;
+  border-bottom:1px solid #333;
+  background:radial-gradient(ellipse at 48% 43%,#25252555,transparent 60%),#0c0c0c
+}
+.canvas-space {
+  position:relative;
+  margin:0 auto
+}
+.tree {
+  position:relative;
+  transform-origin:top left;
+  width:3440px;
+  height:6320px
+}
+.tree svg {
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  pointer-events:none
+}
+.tree path {
+  fill:none;
+  stroke:#888;
+  stroke-width:1.5
+}
+.person {
+  position:absolute;
+  width:230px;
+  height:235px;
+  padding:15px 16px;
+  background:linear-gradient(130deg,#222,#141414);
+  border:1px solid #4c4c4c;
+  box-shadow:0 9px 25px #0008;
+  text-decoration:none;
+  transition:border-color .25s,box-shadow .25s
+}
+.person:hover {
+  border-color:#eee;
+  box-shadow:0 12px 30px #000
+}
+.person.silver {
+  background:linear-gradient(130deg,#303030,#191919);
+  border-color:#858585
+}
+.family {
+  display:block;
+  font-size:12px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:#aaa
+}
+.person h2 {
+  font:normal 23px/1.14 Georgia,serif;
+  margin:6px 0
+}
+.person p {
+  margin:0
+}
+.years {
+  font-size:14px;
+  color:#eee
+}
+.place {
+  font-size:14px;
+  line-height:1.4;
+  color:#aaa;
+  margin-top:5px!important
+}
+.branch-label {
+  position:absolute;
+  color:#888;
+  font-size:14px;
+  letter-spacing:.12em;
+  text-transform:uppercase
+}
+.closing {
+  max-width:850px;
+  margin:35px auto;
+  padding:0 25px;
+  color:#aaa
+}
+.closing h2 {
+  color:#eee;
+  font:normal 30px Georgia,serif
+}
+.closing p {
+  margin:14px 0
+}
+.closing a {
+  color:#ddd
+}
+footer {
+  max-width:1080px;
+  margin:35px auto;
+  padding:0 25px;
+  color:#888;
+  font-size:14px
+}
+@media(max-width:600px) {
+  header {
+    padding:12px 18px;
+    gap:12px
+  }
+  header strong {
+    font-size:12px
+  }
+  .intro {
+    margin-top:32px;
+    gap:18px
+  }
+  .intro img {
+    width:56px
+  }
+  .hint {
+    font-size:13px
+  }
+  .toolbar {
+    padding:0 18px
+  }
+  .controls {
+    gap:5px
+  }
+  button,.jump {
+    padding:8px 10px
+  }
+}
+@media(prefers-reduced-motion:no-preference) {
+  html {
+    scroll-behavior:smooth
+  }
+  .person {
+    animation:arrive .6s ease both
+  }
+  @keyframes arrive {
+    from {
+      opacity:0
+    }
+    to {
+      opacity:1
+    }
+  }
+}
+.household-link path {
+  stroke-dasharray:7 6
+}
+.household-link text {
+  fill:#bbb;
+  font:14px system-ui,sans-serif
+}
+.card-heading {
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  margin:8px 0;
+  min-height:53px
+}
+.card-heading h2 {
+  font-size:21px;
+  line-height:1.12;
+  margin:0;
+  overflow-wrap:anywhere
+}
+.card-arms {
+  width:42px;
+  height:57px;
+  object-fit:contain;
+  flex:0 0 42px;
+  filter:drop-shadow(0 3px 3px #0006)
+}
+.couple circle {
+  fill:#0c0c0c
+}
+.couple text {
+  fill:#ddd;
+  font:24px Georgia,serif
+}
+.research {
+  max-width:1030px;
+  margin:28px auto;
+  padding:18px 22px;
+  border:1px solid #444;
+  background:#151515;
+  color:#aaa
+}
+.research summary {
+  cursor:pointer;
+  color:#eee
+}
+.research h2 {
+  font:27px Georgia,serif
+}
+.research p {
+  margin:12px 0
+}
+.research a {
+  color:#ddd
+}
+.arms-sources {
+  font-size:14px
+}
+.arms-sources li {
+  margin:8px 0
+}
+.tree path.uncertain {
+  stroke-dasharray:6 6
+}
+.person.research-person {
+  border-style:dashed
+}
+.person.research-person .family:after {
+  content:" · spår"
+}
+.couple:has(title) {
+  opacity:.85
+}
+.journey-stop {
+  position:absolute;
+  width:265px;
+  height:130px;
+  padding:16px 20px;
+  border:1px solid #666;
+  background:#161616;
+  text-decoration:none
+}
+.journey-stop span {
+  font-size:14px;
+  color:#aaa
+}
+.journey-stop h3 {
+  font:25px/1.2 Georgia,serif;
+  margin:8px 0
+}
+.journey-stop p {
+  font-size:14px;
+  color:#bbb;
+  margin:0
+}
+.journey-stop:hover {
+  border-color:#eee
+}
+.tree .travel-link {
+  stroke:#ccc;
+  stroke-dasharray:3 5
+}
+.tree .place-parent {
+  stroke:#888
+}
+.viewport {
+  height:78vh;
+  min-height:380px;
+  overflow:auto;
+  cursor:grab;
+  scroll-behavior:auto;
+  touch-action:pan-x pan-y;
+  overscroll-behavior:contain
+}
+.viewport.is-dragging,.viewport.is-dragging * {
+  cursor:grabbing!important;
+  user-select:none!important
+}
+.viewport img {
+  -webkit-user-drag:none
+}
+.viewport .person,.viewport .journey-stop {
+  cursor:grab
+}

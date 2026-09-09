@@ -1,21 +1,19 @@
-# Granskning av den kompletta sidan
+# Teknisk granskning – 9 september 2026
 
-Den aktuella sidan är `gunnar-andersson-hemsida-komplett.html`. `index.html` leder besökare från webbplatsens huvudadress till den. Den äldre berättelsefilen är borttagen; tidigare versioner finns kvar i Git-historiken.
+Publiceringen är flyttad till GitHub Pages. Arbetsflödet i `.github/workflows/pages.yml` kontrollerar, bygger och publicerar `build/` när `main` uppdateras. Sites-konfigurationen är borttagen från projektet.
 
-## Utförda ändringar
+Källunderlaget i `sources/` behålls lokalt och är undantaget från det publika GitHub-repositoryt. Webbplatsens befintliga texter och bildmaterial ligger i HTML-filerna och `assets/`.
 
-- Formaterat HTML, CSS och JavaScript med tydliga avsnitt.
-- Samlat stilarna och placerat sidans JavaScript efter samtliga dialoger.
-- Tagit bort oanvända rester av redigeringsläget.
-- Kopplat kartplatser till beständiga kapitel-ID:n och lagt till reservtext för kapitel utan kartuppgift.
-- Rättat kartans felmeddelanden vid scrollning och återhämtning när kartbilder åter laddas.
-- Bevarat synligt innehåll när IntersectionObserver saknas.
-- Anpassat kapitelnavigeringens höjd och långa årtal för mindre skärmar samt lagt till tangentbordsgenväg till tidslinjen och explicita knapptyper.
+Senare justering: sökrutan i livsberättelsen är borttagen på användarens begäran. Tidslinjen läses genom att scrolla. Släktträdets sökning finns kvar.
 
-Alla 30 kapitel, texter och 57 inbakade bildförekomster är bevarade, inklusive uppgifterna om Anna och Anders och avsnittet om Hansa. Filen är cirka 20,4 MB eftersom bilderna är inbakade. Kartan kräver internetanslutning.
+Det nyare materialet från skrivbordets `dist`, `sources` och `scripts` har införts i projektet. Berättelsetexten på båda sidorna har jämförts med originalen, med undantag för blanksteg och den tillagda tillgänglighetslänken. Alla 30 kapitel, 56 personkort och 87 HTML-bildförekomster är bevarade. Inbakade bilders bytes har jämförts med de extraherade filerna.
 
-## Kontroller
+HTML, CSS, JavaScript, bilder och källunderlag ligger i separata filer. Relativa sid- och bildlänkar fungerar även under en projektadress som GitHub Pages. Den tidigare reparerade tidslinjekoden är återanvänd: kartplatser kopplas till kapitel-ID, kartans felstatus bevaras och innehållet förblir läsbart utan IntersectionObserver.
 
-HTML-parser och simulerade webbläsaranrop verifierade bevarad text och bilddata, unika ID:n, interna länkmål, samtliga källbildsknappar, dialoger, zoom, Nordmalings- och Hansa-kapitlens kartplatser, växling av Hansa-bakgrund samt kartans felläge och återhämtning. Formateraren kunde tolka HTML, CSS och JavaScript.
+Sökning hittar kapitel och personer via namn, plats eller årtal och hanterar svenska tecken. Trädets sökträffar visas i läsbar zoom. Överblick anpassas till hela trädets bredd även på små skärmar. Länken till platser går till den första platsgrenen. Musdrag och pekskärmssvep bevaras.
 
-Ingen visuell kontroll i en riktig webbläsare har genomförts. Historiska uppgifter och externa källor har inte faktagranskats. Formuleringen om en koppling till den adliga ätten Silfverlåås i sammanfattningen är fortfarande säkrare än familjepanelens uppgift att kopplingen inte är styrkt; texten har lämnats oförändrad.
+Python-kontrollerna och bygget är godkända: lokala länkar, bildsökvägar, unika ID:n, alternativtexter och dialogmål är kontrollerade. JavaScript-filerna klarar Nodes syntaxkontroll. Två funktionstester för sökning och trädnavigering är godkända, inklusive mobil överblick, zoom till person, sökning utan diakritiska tecken, flera sökord och tomma träfflistor.
+
+Bygget håller forskningsunderlag utanför publiceringsmappen och skapar omdirigeringar från de gamla adresserna. Funktionstesterna använder en simulerad DOM; det ersätter inte visuell kontroll i en riktig webbläsare.
+
+Historiska påståenden och externa källor har inte faktagranskats på nytt. Äldre källanteckningar kan beskriva tidigare forskningsbeslut; sidorna återger det senast importerade materialet. Ingen visuell webbläsargranskning har genomförts.

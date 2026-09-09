@@ -1,0 +1,7 @@
+build/
+__pycache__/
+*.pyc
+.site-package*.tar.gz
+.site-publish/
+.github-pages-admin.py
+/sources/
