@@ -14,7 +14,8 @@ body {margin:0;min-width:280px}
   object-fit:cover;
   object-position:58% 46%;
   filter:grayscale(1);
-  pointer-events:none
+  pointer-events:none;
+  transition:transform .6s cubic-bezier(.16,1,.3,1),filter .5s ease
 }
 body::after {
   content:"";
@@ -22,6 +23,16 @@ body::after {
   inset:0;
   pointer-events:none;
   background:radial-gradient(ellipse at center,#0000000a 15%,#0000007d 100%),linear-gradient(0deg,#070707a8,transparent 28%,transparent 78%,#07070766)
+}
+body::before {
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:10;
+  background:#080808;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .22s ease
 }
 .home {
   position:relative;
@@ -54,7 +65,8 @@ body::after {
   backdrop-filter:blur(8px);
   -webkit-backdrop-filter:blur(8px);
   isolation:isolate;
-  transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease,background .3s ease;
+  overflow:hidden;
+  transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease,opacity .3s ease;
   -webkit-tap-highlight-color:transparent
 }
 .home-choice::before {
@@ -62,9 +74,19 @@ body::after {
   position:absolute;
   inset:0;
   z-index:-1;
-  background:linear-gradient(115deg,#ffffff12,transparent 70%);
+  background:radial-gradient(ellipse at var(--pointer-x,50%) var(--pointer-y,50%),#ffffff22,transparent 75%);
   opacity:0;
   transition:opacity .3s ease
+}
+.home-choice::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  background:linear-gradient(110deg,transparent 25%,#ffffff12 50%,transparent 75%);
+  transform:translateX(-140%);
+  transition:transform .8s cubic-bezier(.2,.7,.3,1);
+  pointer-events:none
 }
 .home-choice strong {
   min-width:0;
@@ -78,15 +100,14 @@ body::after {
   color:#aaa;
   transition:transform .3s ease,color .3s ease
 }
-@media(hover:hover) {
-  .home-choice:hover {
-    transform:translateY(-7px);
+.home-choice.is-hovered {
+    transform:translateY(-8px) perspective(900px) rotateX(var(--tilt-x,0deg)) rotateY(var(--tilt-y,0deg)) scale(1.018);
     border-color:#e0e0e0;
     box-shadow:0 22px 60px #0009,0 0 32px #ffffff0a
-  }
-  .home-choice:hover::before {opacity:1}
-  .home-choice:hover .choice-arrow {transform:translateX(7px);color:#fff}
 }
+.home-choice.is-hovered::before {opacity:1}
+.home-choice.is-hovered::after {transform:translateX(140%)}
+.home-choice.is-hovered .choice-arrow {transform:translateX(7px);color:#fff}
 .home-choice:focus-visible {
   outline:2px solid #fff;
   outline-offset:6px;
@@ -94,6 +115,34 @@ body::after {
 }
 .home-choice:focus-visible::before {opacity:1}
 .home-choice:active {transform:translateY(-1px) scale(.985)}
+.choice-ripple {
+  position:absolute;
+  z-index:-1;
+  width:1100px;
+  height:1100px;
+  border-radius:50%;
+  background:radial-gradient(circle,#ffffff35,transparent 65%);
+  pointer-events:none;
+  animation:choice-ripple .48s ease-out both
+}
+.is-leaving .home-map {transform:scale(1.08);filter:grayscale(1) brightness(.65)}
+.is-leaving::before {opacity:1;transition-delay:.24s}
+.is-leaving .home-choice:not(.is-selected) {opacity:0;transform:translateY(12px) scale(.97)}
+.is-leaving .home-choice.is-selected {
+  border-color:#fff;
+  box-shadow:0 15px 80px #ffffff16;
+  animation:choice-open .48s cubic-bezier(.16,1,.3,1) both
+}
+.is-leaving .is-selected .choice-arrow {transform:translateX(18px);color:#fff}
+.is-leaving .map-source {opacity:0}
+@keyframes choice-ripple {
+  from {transform:translate(-50%,-50%) scale(0);opacity:1}
+  to {transform:translate(-50%,-50%) scale(1);opacity:0}
+}
+@keyframes choice-open {
+  from {transform:translateY(-8px) scale(1.018)}
+  to {transform:translateY(-8px) scale(1.09)}
+}
 .map-source {
   position:fixed;
   z-index:2;
@@ -129,6 +178,6 @@ body::after {
   }
 }
 @media(prefers-reduced-motion:reduce) {
-  *,*::before {animation:none!important;transition:none!important}
-  .home-choice:hover,.home-choice:active,.home-choice:hover .choice-arrow {transform:none}
+  *,*::before,*::after {animation:none!important;transition:none!important}
+  .home-choice.is-hovered,.home-choice:active,.home-choice.is-hovered .choice-arrow {transform:none}
 }

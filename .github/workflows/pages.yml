@@ -24,6 +24,7 @@ jobs:
           node --check assets/js/tree.js
           node --check assets/js/search.js
           node --check assets/js/home.js
+          node --check assets/js/page-entry.js
           node --test tests/interactions.test.cjs
       - name: Build and validate website
         run: |
