@@ -22,6 +22,7 @@ python scripts/serve.py
 
 ```powershell
 python scripts/check.py
+python -m unittest discover -s tests -p "test_*.py"
 python scripts/build.py
 node --check assets/js/timeline.js
 node --check assets/js/tree.js
@@ -29,7 +30,7 @@ node --check assets/js/search.js
 node --test tests/interactions.test.cjs
 ```
 
-Node behövs bara för JavaScript-kontrollerna. Sidorna kan även öppnas direkt från `index.html`.
+Node behövs bara för JavaScript-kontrollerna. Sidorna kan även öppnas direkt från `index.html`. Bygget ger CSS- och JavaScript-filer innehållsbaserade filnamn så att webbläsaren alltid laddar den layout som hör till sidan. Linjekontrollen verifierar att SVG-ytan matchar trädets storlek och att alla linjer ansluter till rutor eller grenar.
 
 ## Struktur och redigering
 

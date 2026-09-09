@@ -29,9 +29,9 @@ function run(file, context) {
 test('Tree overview fits a mobile width; search and place links reveal the correct person', () => {
   const nodes = Object.fromEntries(['viewport', 'space', 'tree', 'zoom', 'minus', 'plus', 'fit', 'read', 'places-jump', 'last', 'peter1645', 'andersj'].map(id => [id, new Element(id)]));
   Object.assign(nodes.viewport, { clientWidth: 360, clientHeight: 600 });
-  Object.assign(nodes.tree, { offsetWidth: 3440, offsetHeight: 6320, contains: (node) => ['peter1645', 'andersj'].includes(node.id) });
-  Object.assign(nodes.peter1645, { offsetLeft: 2085, offsetTop: 3750, offsetWidth: 230, offsetHeight: 235 });
-  Object.assign(nodes.andersj, { offsetLeft: 555, offsetTop: 5430, offsetWidth: 230, offsetHeight: 235 });
+  Object.assign(nodes.tree, { offsetWidth: 3440, offsetHeight: 9480, contains: (node) => ['peter1645', 'andersj'].includes(node.id) });
+  Object.assign(nodes.peter1645, { offsetLeft: 2085, offsetTop: 5625, offsetWidth: 230, offsetHeight: 353 });
+  Object.assign(nodes.andersj, { offsetLeft: 555, offsetTop: 8145, offsetWidth: 230, offsetHeight: 353 });
   const document = new Element();
   document.querySelector = selector => nodes[selector.slice(1)];
   document.getElementById = id => nodes[id];
@@ -43,7 +43,7 @@ test('Tree overview fits a mobile width; search and place links reveal the corre
   assert.equal(nodes.zoom.textContent, '100%');
   assert.equal(nodes.viewport.scrollLeft, 2020);
   document.dispatchEvent({ type: 'tree:reveal', detail: 'andersj' });
-  assert.equal(nodes.viewport.scrollTop, 5247.5);
+  assert.equal(nodes.viewport.scrollTop, 8021.5);
   nodes.viewport.clientWidth = 900;
   nodes.fit.onclick();
   nodes.viewport.clientWidth = 600;

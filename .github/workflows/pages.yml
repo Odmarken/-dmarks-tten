@@ -25,7 +25,9 @@ jobs:
           node --check assets/js/search.js
           node --test tests/interactions.test.cjs
       - name: Build and validate website
-        run: python3 scripts/build.py
+        run: |
+          python3 -m unittest discover -s tests -p "test_*.py"
+          python3 scripts/build.py
       - name: Upload website
         uses: actions/upload-pages-artifact@v4
         with:
