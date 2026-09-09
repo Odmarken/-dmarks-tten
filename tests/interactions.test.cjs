@@ -26,6 +26,14 @@ function run(file, context) {
   vm.runInNewContext(fs.readFileSync(path.join(__dirname, '../assets/js', file), 'utf8'), context);
 }
 
+test('Home preserves chapter bookmarks and stays home without a fragment', () => {
+  let destination = null;
+  run('home.js', { location: { hash: '', search: '', replace: value => { destination = value; } } });
+  assert.equal(destination, null);
+  run('home.js', { location: { hash: '#anders-1932', search: '?from=family', replace: value => { destination = value; } } });
+  assert.equal(destination, './gunnars-spar.html?from=family#anders-1932');
+});
+
 test('Tree overview fits a mobile width; search and place links reveal the correct person', () => {
   const nodes = Object.fromEntries(['viewport', 'space', 'tree', 'zoom', 'minus', 'plus', 'fit', 'read', 'places-jump', 'last', 'peter1645', 'andersj', 'viktorodmark'].map(id => [id, new Element(id)]));
   Object.assign(nodes.viewport, { clientWidth: 360, clientHeight: 600 });

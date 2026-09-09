@@ -1,6 +1,6 @@
 # Gunnar Valfrid – livsspår
 
-Tidslinje med 30 kapitel, källbilder och ett släktträd med 62 personer.
+Startsida med Norden som svartvit bakgrund och två ingångar: Gunnars spår och Silfverlååsätten. Tidslinjen innehåller 30 kapitel och släktträdet 62 personer.
 
 Webbplats: https://odmarken.github.io/-dmarks-tten/
 
@@ -27,6 +27,7 @@ python scripts/build.py
 node --check assets/js/timeline.js
 node --check assets/js/tree.js
 node --check assets/js/search.js
+node --check assets/js/home.js
 node --test tests/interactions.test.cjs
 ```
 
@@ -36,7 +37,8 @@ Node behövs bara för JavaScript-kontrollerna. Sidorna kan även öppnas direkt
 
 | Fil eller mapp | Innehåll |
 | --- | --- |
-| `index.html` | Berättelsen, kapiteltexter, familj och källbildsdialoger. |
+| `index.html` | Startsida med ingångar till berättelsen och släktträdet. |
+| `gunnars-spar.html` | Berättelsen, kapiteltexter, familj och källbildsdialoger. |
 | `silfverlaas.html` | Släktträdets personkort, linjer, platser och källnotiser. |
 | `assets/css/` | Tidslinjens, trädets och sökningens stilar. |
 | `assets/js/` | Karta, dialoger, zoom, panorering och sökning. |
@@ -48,10 +50,10 @@ Node behövs bara för JavaScript-kontrollerna. Sidorna kan även öppnas direkt
 | `tests/` | Funktionstester för sökning och trädnavigering. |
 | `build/` | Genererad publiceringsmapp; ändra inte filer här. |
 
-Redigera innehållet i de två HTML-filerna och beteendet i `assets/js/`. Behåll befintliga kapitel- och person-ID:n så att bokmärken och kartplatser fortsätter fungera. Livsberättelsen läses genom att scrolla, utan sökruta. Sökningen i släktträdet läser personkorten automatiskt. `sources/tree-lineage.json` är den importerade dataexporten, inte en aktiv generator; ändringar där ändrar inte sidan.
+Redigera innehållet i de tre HTML-filerna och beteendet i `assets/js/`. Behåll befintliga kapitel- och person-ID:n så att bokmärken och kartplatser fortsätter fungera. Gamla bokmärken till kapitel på `index.html` skickas vidare till samma kapitel på `gunnars-spar.html`. Livsberättelsen läses genom att scrolla, utan sökruta. Sökningen i släktträdet läser personkorten automatiskt. `sources/tree-lineage.json` är den importerade dataexporten, inte en aktiv generator; ändringar där ändrar inte sidan.
 
 Lägg nya bilder i `assets/images/` och använd relativa länkar. Kör `python scripts/build.py` efter ändringar. Bygget innehåller endast webbsidor och webbassets, samt små omdirigeringar för de två gamla Gunnar-adresserna. Forskningsanteckningarna i `sources/` stannar lokalt och skickas inte till GitHub. Utvecklingsskripten finns i repositoryt men publiceras inte på webbplatsen.
 
-Den stora gamla HTML-filen är ersatt av `index.html`. Tidigare version finns i Git-historiken; originalen på skrivbordet är bevarade. GitHub Pages publicerar den genererade `build/`-mappen. Omdirigeringarna från de gamla sidnamnen ingår där.
+Livsberättelsen ligger på `gunnars-spar.html`; `index.html` är den gemensamma startsidan. Tidigare versioner finns i Git-historiken. GitHub Pages publicerar den genererade `build/`-mappen. Omdirigeringarna från de gamla sidnamnen ingår där. Startsideskartan använder Natural Earths fria geografiska data och laddas lokalt från `assets/images/norden.svg`.
 
 Karta och externa källsidor behöver internet. Historiska uppgifter och tidigare osäkerhetsmarkeringar är bevarade; omstruktureringen är ingen ny faktagranskning.

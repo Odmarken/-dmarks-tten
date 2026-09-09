@@ -37,17 +37,17 @@ def build():
     if OUTPUT.exists():
         shutil.rmtree(OUTPUT)
     OUTPUT.mkdir()
-    for name in ("index.html", "silfverlaas.html", ".nojekyll"):
+    for name in ("index.html", "gunnars-spar.html", "silfverlaas.html", ".nojekyll"):
         shutil.copy2(ROOT / name, OUTPUT / name)
     shutil.copytree(ROOT / "assets", OUTPUT / "assets")
     version_assets(OUTPUT)
     # Preserve historical URLs in the build without keeping the large old page.
     redirect = '''<!doctype html><html lang="sv"><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta http-equiv="refresh" content="0;url=./index.html">
+<meta http-equiv="refresh" content="0;url=./gunnars-spar.html">
 <title>Gunnars livsspår har flyttat</title>
-<p><a href="./index.html">Öppna Gunnars livsspår</a></p>
-<script>location.replace('./index.html'+location.search+location.hash)</script></html>'''
+<p><a href="./gunnars-spar.html">Öppna Gunnars livsspår</a></p>
+<script>location.replace('./gunnars-spar.html'+location.search+location.hash)</script></html>'''
     for name in ("gunnar-andersson-hemsida.html", "gunnar-andersson-hemsida-komplett.html"):
         (OUTPUT / name).write_text(redirect, encoding="utf-8")
     check(OUTPUT)
